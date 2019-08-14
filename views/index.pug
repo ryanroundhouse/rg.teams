@@ -1,0 +1,11 @@
+extends base.pug
+
+block body
+  h1.text-center Welcome to RG Teams!
+
+  .jumbotron
+    .div.form-group
+      label #[input#scheduleSelector.form-control(type="radio", name="scheduleSelection", value="weekly", onclick=`index.scheduleSelectionOnClicked(${JSON.stringify("weekly")});`)] Weekly
+      label #[input#scheduleSelector.form-control(type="radio", name="scheduleSelection", value="single", onclick=`index.scheduleSelectionOnClicked(${JSON.stringify("single")});`)] Single
+    p.
+      Please #[a(href="/login") login] to continue.
