@@ -5,7 +5,13 @@ block body
 
   .jumbotron
     .div.form-group
-      label #[input#scheduleSelector.form-control(type="radio", name="scheduleSelection", value="weekly", onclick=`index.scheduleSelectionOnClicked(${JSON.stringify("weekly")});`)] Weekly
-      label #[input#scheduleSelector.form-control(type="radio", name="scheduleSelection", value="single", onclick=`index.scheduleSelectionOnClicked(${JSON.stringify("single")});`)] Single
-    p.
-      Please #[a(href="/login") login] to continue.
+      label #[input#scheduleSelector.form-control(type="radio", name="scheduleSelection", value="weekly", onclick=`index.scheduleSelectionOnClicked(${JSON.stringify("weeklyForm")});`)] Weekly
+      label #[input#scheduleSelector.form-control(type="radio", name="scheduleSelection", value="single", onclick=`index.scheduleSelectionOnClicked(${JSON.stringify("singleForm")});`)] Single
+    .div.selection-form-group#weeklyForm
+      label weekly
+    .div.selection-form-group#singleForm
+      label single
+    //p.
+    //  Please #[a(href="/login") login] to continue.
+
+  script(src="/static/javascripts/index.js")

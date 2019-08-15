@@ -5,3 +5,7 @@ h1 {
 .jumbotron {
   margin-top: 2em;
 }
+
+.selection-form-group{
+  display:none;
+}
