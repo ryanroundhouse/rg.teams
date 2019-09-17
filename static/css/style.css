@@ -9,3 +9,21 @@ h1 {
 .selection-form-group{
   display:none;
 }
+
+.calendarTable{
+  width: 100%;
+  border: 1px solid black;
+}
+
+.dayOfWeekHeader{
+  border: 1px solid black;
+}
+
+.dayOfWeekPanel{
+  border: 1px solid black;
+  height: 4em;
+}
+
+.dayOfWeekPanel.highlighted{
+  background-color: grey;
+}

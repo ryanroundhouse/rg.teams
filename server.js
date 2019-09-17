@@ -5,7 +5,7 @@ var logger = require('morgan');
 
 const session = require("express-session");
 
-var indexRouter = require('./routes/index');
+var createScheduleRouter = require('./routes/createSchedule');
 var usersRouter = require('./routes/users');
 
 var app = express();
@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/', createScheduleRouter);
 app.use('/users', usersRouter);
 
 module.exports = app;

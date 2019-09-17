@@ -1,0 +1,34 @@
+extends base.pug
+
+block body
+  h1.text-center Welcome to RG Teams!
+
+  .jumbotron
+    .div.form-group
+      label #[input#scheduleSelector.form-control(type="radio", name="scheduleSelection", value="weekly", onclick=`createSchedule.scheduleSelectionOnClicked(${JSON.stringify("weeklyForm")});`)] Weekly
+      label #[input#scheduleSelector.form-control(type="radio", name="scheduleSelection", value="single", onclick=`createSchedule.scheduleSelectionOnClicked(${JSON.stringify("singleForm")});`)] Single
+    .div.selection-form-group#weeklyForm
+      label Choose day of week
+      table.calendarTable
+        tr
+          th.dayOfWeekHeader Sunday
+          th.dayOfWeekHeader Monday
+          th.dayOfWeekHeader Tuesday
+          th.dayOfWeekHeader Wednesday
+          th.dayOfWeekHeader Thursday
+          th.dayOfWeekHeader Friday
+          th.dayOfWeekHeader Saturday
+        tr
+          td.dayOfWeekPanel(onclick=`createSchedule.dayOfWeekOnClick(event);`)
+          td.dayOfWeekPanel(onclick=`createSchedule.dayOfWeekOnClick(event);`)
+          td.dayOfWeekPanel(onclick=`createSchedule.dayOfWeekOnClick(event);`)
+          td.dayOfWeekPanel(onclick=`createSchedule.dayOfWeekOnClick(event);`)
+          td.dayOfWeekPanel(onclick=`createSchedule.dayOfWeekOnClick(event);`)
+          td.dayOfWeekPanel(onclick=`createSchedule.dayOfWeekOnClick(event);`)
+          td.dayOfWeekPanel(onclick=`createSchedule.dayOfWeekOnClick(event);`)
+    .div.selection-form-group#singleForm
+      label single
+    //p.
+    //  Please #[a(href="/login") login] to continue.
+
+  script(src="/static/javascripts/createSchedule.js")
