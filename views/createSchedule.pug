@@ -1,5 +1,10 @@
 extends base.pug
 
+block scripts
+  script(src="/static/javascripts/picker.min.js")
+  script(src="/static/javascripts/createSchedule.js")
+  link(rel="stylesheet", href="/static/css/picker.min.css")
+
 block body
   h1.text-center Welcome to RG Teams!
 
@@ -26,9 +31,11 @@ block body
           td.dayOfWeekPanel(onclick=`createSchedule.dayOfWeekOnClick(event);`)
           td.dayOfWeekPanel(onclick=`createSchedule.dayOfWeekOnClick(event);`)
           td.dayOfWeekPanel(onclick=`createSchedule.dayOfWeekOnClick(event);`)
+      .div.time-selection
+        div.js-inline-picker.start-time-picker
     .div.selection-form-group#singleForm
       label single
     //p.
     //  Please #[a(href="/login") login] to continue.
-
-  script(src="/static/javascripts/createSchedule.js")
+  script.
+    window.onload = createSchedule.onSchedulePageLoad;

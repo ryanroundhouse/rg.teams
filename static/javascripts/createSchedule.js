@@ -20,5 +20,13 @@ var createSchedule = {
         }
         clickedCell.classList.add('highlighted');
         event.stopPropagation();
+    },
+    onSchedulePageLoad : function(){
+        new Picker(document.querySelector('.js-inline-picker'), {
+            controls: true,
+            format: 'HH:mm',
+            headers: true,
+            inline: true
+          });
     }
 }
