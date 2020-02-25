@@ -8,34 +8,21 @@ block scripts
 block body
   h1.text-center Welcome to RG Teams!
 
-  .jumbotron
+  form.jumbotron(method='POST' action='/game/add')
     .div.form-group
       label #[input#scheduleSelector.form-control(type="radio", name="scheduleSelection", value="weekly", onclick=`createSchedule.scheduleSelectionOnClicked(${JSON.stringify("weeklyForm")});`)] Weekly
       label #[input#scheduleSelector.form-control(type="radio", name="scheduleSelection", value="single", onclick=`createSchedule.scheduleSelectionOnClicked(${JSON.stringify("singleForm")});`)] Single
+    // weekly game controls
     .div.selection-form-group#weeklyForm
       label Choose day of week
-      table.calendarTable
-        tr
-          th.dayOfWeekHeader Sunday
-          th.dayOfWeekHeader Monday
-          th.dayOfWeekHeader Tuesday
-          th.dayOfWeekHeader Wednesday
-          th.dayOfWeekHeader Thursday
-          th.dayOfWeekHeader Friday
-          th.dayOfWeekHeader Saturday
-        tr
-          td.dayOfWeekPanel(onclick=`createSchedule.dayOfWeekOnClick(event);`)
-          td.dayOfWeekPanel(onclick=`createSchedule.dayOfWeekOnClick(event);`)
-          td.dayOfWeekPanel(onclick=`createSchedule.dayOfWeekOnClick(event);`)
-          td.dayOfWeekPanel(onclick=`createSchedule.dayOfWeekOnClick(event);`)
-          td.dayOfWeekPanel(onclick=`createSchedule.dayOfWeekOnClick(event);`)
-          td.dayOfWeekPanel(onclick=`createSchedule.dayOfWeekOnClick(event);`)
-          td.dayOfWeekPanel(onclick=`createSchedule.dayOfWeekOnClick(event);`)
       .div.time-selection
         div.js-inline-picker.start-time-picker
+    // single date controls
     .div.selection-form-group#singleForm
-      label single
-    //p.
-    //  Please #[a(href="/login") login] to continue.
+      label(for='singleDate') What is the date of the game?
+      input#StartDate.input-sm.form-control(type='date', name='singleDate')
+      label(for='singleTime') What is the time of the game?
+      input#StartTime.input-sm.form-control(type='time', name='singleTime', step='300')
+      button.btn.btn-primary(type='submit') Save
   script.
     window.onload = createSchedule.onSchedulePageLoad;
