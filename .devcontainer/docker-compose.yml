@@ -18,12 +18,13 @@ services:
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
 
-    #env_file: .env
+    #env_file: 
+    #  - .env
 
     environment:
       - MONGO_HOSTNAME=mongo
       - MONGO_PORT=27017
-      - MONGO_DB=myapp 
+      - MONGO_DB=rgteam
 
     links:
       - mongo
