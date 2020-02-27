@@ -9,9 +9,7 @@ var GameSchema = new Schema(
 )
 
 // Virtual for game's URL
-GameSchema
-.virtual('url')
-.get(function () {
+GameSchema.virtual('url').get(function () {
   return '/game/' + this._id;
 });
 

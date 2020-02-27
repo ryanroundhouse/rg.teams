@@ -24,5 +24,9 @@ block body
       label(for='singleTime') What is the time of the game?
       input#StartTime.input-sm.form-control(type='time', name='singleTime', step='300')
       button.btn.btn-primary(type='submit') Save
+  .div.gameDiv
+    ul
+      each game in games
+        li= game.date
   script.
     window.onload = createSchedule.onSchedulePageLoad;

@@ -1,10 +1,16 @@
 var express = require('express');
+var Game = require('../models/game');
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  
-  res.render('createSchedule', { title: 'Hey', message: 'Hello there!' })
+  Game.find({}, 'date', function(err, games){
+    if (err) 
+    {
+        return handleError(err);
+    }
+    res.render('createSchedule', { title: 'Hey', message: 'Hello there!', games: games })
+  })
 });
 
 module.exports = router;

@@ -23,7 +23,7 @@ exports.getAll = function(req, res){
         {
             return handleError(err);
         }
-        res.send(games);
+        res.send(games)
     })
 };
 
