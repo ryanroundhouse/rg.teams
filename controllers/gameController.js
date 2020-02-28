@@ -1,9 +1,10 @@
 var Game = require('../models/game');
 
 exports.add = function(req, res){
+    var date = new Date(req.body.singleDate + ' ' + req.body.singleTime); 
     var newGame = new Game(
         {
-            date: req.body.singleDate,
+            date: date,
         }
     );
     // Save the new model instance, passing a callback
@@ -14,7 +15,7 @@ exports.add = function(req, res){
         }
         console.log("saved " + newGame._id)
     });
-    res.send('Game added');
+    res.redirect('back');
 };
 
 exports.getAll = function(req, res){
@@ -23,7 +24,7 @@ exports.getAll = function(req, res){
         {
             return handleError(err);
         }
-        res.send(games)
+        res.send(games);
     })
 };
 
@@ -34,5 +35,16 @@ exports.getById = function(req, res){
             return handleError(err);
         }
         res.send(games);
+    })
+};
+
+exports.deleteById = function(req, res){
+    var result = Game.deleteOne({_id: req.params.id}, function(err, result){
+        if (err){
+            return handleError(err);
+        }
+        else{
+            res.redirect('back');
+        }
     })
 };

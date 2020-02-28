@@ -28,5 +28,8 @@ var createSchedule = {
             headers: true,
             inline: true
           });
-    }
+    },
+    deleteGame: function(id){
+        alert('got id ' + id);
+    },
 }
