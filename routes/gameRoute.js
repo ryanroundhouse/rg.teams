@@ -6,7 +6,7 @@ var gameController = require('../controllers/gameController');
 
 router.get('/', gameController.getAll);
 router.post('/add', gameController.add);
-router.get('/:id', gameController.getById);
+router.get('/game/:id', gameController.getById);
 router.post('/delete/:id', gameController.deleteById);
 
 module.exports = router;
