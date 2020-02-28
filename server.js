@@ -5,8 +5,8 @@ var logger = require('morgan');
 
 const session = require("express-session");
 
-var createScheduleRouter = require('./routes/createSchedule');
-var createGameRouter = require('./routes/gameRoute');
+var pageRouter = require('./routes/pageRouter');
+var gameRouter = require('./routes/gameRoute');
 var usersRouter = require('./routes/users');
 
 //Import the mongoose module
@@ -39,8 +39,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', createScheduleRouter);
-app.use('/game', createGameRouter);
+app.use('/', pageRouter);
+app.use('/game', gameRouter);
 app.use('/users', usersRouter);
 
 module.exports = app;

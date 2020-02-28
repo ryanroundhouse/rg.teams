@@ -2,7 +2,7 @@ extends base.pug
 
 block scripts
   script(src="/static/javascripts/picker.min.js")
-  script(src="/static/javascripts/createSchedule.js")
+  script(src="/static/javascripts/scheduleScripts.js")
   link(rel="stylesheet", href="/static/css/picker.min.css")
 
 block body
@@ -10,8 +10,8 @@ block body
 
   form.jumbotron(method='POST' action='/game/add')
     .div.form-group
-      label #[input#scheduleSelector.form-control(type="radio", name="scheduleSelection", value="weekly", onclick=`createSchedule.scheduleSelectionOnClicked(${JSON.stringify("weeklyForm")});`)] Weekly
-      label #[input#scheduleSelector.form-control(type="radio", name="scheduleSelection", value="single", onclick=`createSchedule.scheduleSelectionOnClicked(${JSON.stringify("singleForm")});`)] Single
+      label #[input#scheduleSelector.form-control(type="radio", name="scheduleSelection", value="weekly", onclick=`scheduleScripts.scheduleSelectionOnClicked(${JSON.stringify("weeklyForm")});`)] Weekly
+      label #[input#scheduleSelector.form-control(type="radio", name="scheduleSelection", value="single", onclick=`scheduleScripts.scheduleSelectionOnClicked(${JSON.stringify("singleForm")});`)] Single
     // weekly game controls
     .div.selection-form-group#weeklyForm
       label Choose day of week
@@ -27,10 +27,9 @@ block body
   .div.gameDiv
     ul
       each game in games
-        //li(onclick=`createSchedule.deleteGame(${JSON.stringify(game.id)})`)= game.date
         li
           label #{game.date}
           form.hidden(method="post", action="/game/delete/" + game.id)
               button.btn.btn-outline-danger.delete Delete
   script.
-    window.onload = createSchedule.onSchedulePageLoad;
+    window.onload = scheduleScripts.onSchedulePageLoad;
