@@ -5,8 +5,29 @@ var logger = require('morgan');
 
 const session = require("express-session");
 
-var createScheduleRouter = require('./routes/createSchedule');
+var pageRouter = require('./routes/pageRouter');
+var gameRouter = require('./routes/gameRoute');
 var usersRouter = require('./routes/users');
+
+//Import the mongoose module
+var mongoose = require('mongoose');
+const {
+    MONGO_HOSTNAME,
+    MONGO_PORT,
+    MONGO_DB
+} = process.env;
+const options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    connectTimeoutMS: 10000,
+};
+//Set up default mongoose connection
+const url = `mongodb://${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
+mongoose.connect(url, options).then( function() {
+    console.log('MongoDB is connected to ' + url);
+}).catch( function(err) {
+    console.log(err);
+});
 
 var app = express();
 app.set('view engine', 'pug');
@@ -18,7 +39,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', createScheduleRouter);
+app.use('/', pageRouter);
+app.use('/game', gameRouter);
 app.use('/users', usersRouter);
 
 module.exports = app;
