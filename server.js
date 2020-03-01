@@ -6,7 +6,7 @@ var logger = require('morgan');
 const session = require("express-session");
 
 var pageRouter = require('./routes/pageRouter');
-var gameRouter = require('./routes/gameRoute');
+var gameRouter = require('./components/game/gameRoute');
 var usersRouter = require('./routes/users');
 
 //Import the mongoose module
