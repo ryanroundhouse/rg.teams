@@ -11,9 +11,9 @@ router.post('/add', async function(req, res, next) {
     res.redirect('back');
 });
 
-router.get('/game/:id', gameAPI.getById);
+router.get('/:id', gameAPI.getById);
 
-router.post('/delete/:id', async function(req, res, next){
+router.post('/:id/delete', async function(req, res, next){
     const id = req.params.id;
     await gameAPI.deleteById(id);
     res.redirect('back');

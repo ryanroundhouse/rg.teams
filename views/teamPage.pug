@@ -12,5 +12,5 @@ block body
       each game in games
         li
           a(href="/team/game/" + game._id) #{game.date}
-          form.hidden(method="post", action="/game/delete/" + game.id)
+          form.hidden(method="post", action="/game/" + game.id + "/delete/")
               button.btn.btn-outline-danger.delete Delete

@@ -14,5 +14,5 @@ block body
     label Game Date:
     label #{game.date}
     br
-    form.hidden(method="post", action="/game/delete/" + game._id)
+    form.hidden(method="post", action="/game/" + game._id + "/delete")
       button.btn.btn-outline-danger.delete Delete
