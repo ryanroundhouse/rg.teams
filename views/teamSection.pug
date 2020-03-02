@@ -1,0 +1,15 @@
+h2.text-center Team Section
+
+form.jumbotron(method='POST' action='/team/add')
+    .div#addTeamForm
+        label(for='teamName') What is the name of the team?
+        input#teamName.input-sm.form-control(type='text', name='teamName')
+        button.btn.btn-primary(type='submit') Save
+
+.div.teamListDiv
+    ul
+      each team in teams
+        li
+          label #{team.name}
+          form.hidden(method="post", action="/team/" + team.id + "/delete")
+              button.btn.btn-outline-danger.delete Delete

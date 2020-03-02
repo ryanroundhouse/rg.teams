@@ -1,8 +1,8 @@
 var Game = require('./gameDAO');
 
-exports.add = function(date, time){
+exports.add = function(date, time, teamId){
     const dateTime = new Date(date + ' ' + time); 
-    Game.add(dateTime);
+    Game.add(dateTime, teamId);
 };
 
 exports.getAll = function(){

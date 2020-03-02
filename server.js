@@ -7,7 +7,7 @@ const session = require("express-session");
 
 var pageRouter = require('./routes/pageRouter');
 var gameRouter = require('./components/game/gameRoute');
-var usersRouter = require('./routes/users');
+var teamRouter = require('./components/team/teamRoute');
 
 //Import the mongoose module
 var mongoose = require('mongoose');
@@ -41,6 +41,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', pageRouter);
 app.use('/game', gameRouter);
-app.use('/users', usersRouter);
+app.use('/team', teamRouter);
 
 module.exports = app;

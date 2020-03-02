@@ -7,7 +7,8 @@ var gameAPI = require('./gameAPI');
 router.post('/add', async function(req, res, next) {
     const date = req.body.singleDate;
     const time = req.body.singleTime;
-    await gameAPI.add(date, time);
+    const teamId = req.body.teamId;
+    await gameAPI.add(date, time, teamId);
     res.redirect('back');
 });
 

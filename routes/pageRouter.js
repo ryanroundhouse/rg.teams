@@ -1,22 +1,24 @@
 var express = require('express');
 var Game = require('../components/game/gameAPI');
+var Team = require('../components/team/teamAPI');
 var router = express.Router();
 
 router.get('/', async function(req, res, next) {
   const games = await Game.getAll();
-  res.render('createSchedule', { title: 'Hey', message: 'Hello there!', games: games })
+  const teams = await Team.getAll();
+  res.render('createSchedule', { 
+    title: 'Hey', 
+    message: 'Hello there!', 
+    games: games, 
+    teams: teams 
+  });
 });
 
-router.get('/team', async function(req, res, next) {
-  const games = await Game.getAll();
-  res.render('teamPage', { games: games });
-});
-
-router.get('/team/game/:id', async function(req, res, next) {
+router.get('/page/game/:id', async function(req, res, next) {
   const game = await Game.getById(req.params.id);
   if (game == null)
   {
-    res.redirect('/team');
+    res.redirect('/');
   }
   else
   {

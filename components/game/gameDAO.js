@@ -1,9 +1,10 @@
 var Game = require('./gameScheme');
 
-exports.add = function(date){
+exports.add = function(date, teamId){
     var newGame = new Game(
         {
             date: date,
+            team: teamId,
         }
     );
     // Save the new model instance, passing a callback
@@ -12,12 +13,12 @@ exports.add = function(date){
         { 
             return handleError(err);
         }
-        console.log("saved " + newGame._id)
+        console.log("saved Game " + newGame._id)
     });
 };
 
 exports.getByID = function(id){
-    return Game.findById(id).exec();
+    return Game.findById(id).populate('team').exec();
 };
 
 exports.getAll = function(){

@@ -8,7 +8,13 @@ block scripts
 block body
   h1.text-center Welcome to RG Teams!
 
+  include teamSection.pug
+
   form.jumbotron(method='POST' action='/game/add')
+    label(for='teamId') Team
+        select(name='teamId', id='')
+            each team in teams
+                option(value=team.id) #{team.name}
     .div.form-group
       label #[input#scheduleSelector.form-control(type="radio", name="scheduleSelection", value="weekly", onclick=`scheduleScripts.scheduleSelectionOnClicked(${JSON.stringify("weeklyForm")});`)] Weekly
       label #[input#scheduleSelector.form-control(type="radio", name="scheduleSelection", value="single", onclick=`scheduleScripts.scheduleSelectionOnClicked(${JSON.stringify("singleForm")});`)] Single
@@ -24,12 +30,8 @@ block body
       label(for='singleTime') What is the time of the game?
       input#StartTime.input-sm.form-control(type='time', name='singleTime', step='300')
       button.btn.btn-primary(type='submit') Save
-  .div.gameDiv
-    ul
-      each game in games
-        li
-          label #{game.date}
-          form.hidden(method="post", action="/game/" + game.id + "/delete")
-              button.btn.btn-outline-danger.delete Delete
+  
+  include gameSection.pug
+
   script.
     window.onload = scheduleScripts.onSchedulePageLoad;

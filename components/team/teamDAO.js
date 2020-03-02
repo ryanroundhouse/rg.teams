@@ -12,7 +12,7 @@ exports.add = function(teamName){
         { 
             return handleError(err);
         }
-        console.log("saved " + newTeam._id)
+        console.log("saved Team " + newTeam._id)
     });
 };
 
