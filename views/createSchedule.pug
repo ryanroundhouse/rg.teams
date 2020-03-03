@@ -10,6 +10,19 @@ block body
 
   include teamSection.pug
 
+  form.jumbotron(method='POST' action='/person/add')
+    .div#addPersonForm
+      label(for='teamId') Team
+        select(name='teamId', id='')
+            each team in teams
+                option(value=team.id) #{team.name}
+      br
+      label(for='personName') What is the name of the person?
+      input#personName.input-sm.form-control(type='text', name='personName')
+      button.btn.btn-primary(type='submit') Save
+
+  include personSection.pug
+
   form.jumbotron(method='POST' action='/game/add')
     label(for='teamId') Team
         select(name='teamId', id='')
