@@ -1,10 +1,11 @@
 var Person = require('./personScheme');
 
-exports.add = function(name, teamId){
+exports.add = function(name, teamId, email){
     var newPerson = new Person(
         {
             name: name,
             team: teamId,
+            email: email,
         }
     );
     // Save the new model instance, passing a callback

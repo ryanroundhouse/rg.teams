@@ -6,6 +6,7 @@ var PersonSchema = new Schema(
     {
         name: {type: String},
         team: {type: mongoose.Schema.Types.ObjectId, ref: 'Team'},
+        email: {type: String},
     }
 )
 

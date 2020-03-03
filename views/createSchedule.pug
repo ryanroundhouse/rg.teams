@@ -19,6 +19,9 @@ block body
       br
       label(for='personName') What is the name of the person?
       input#personName.input-sm.form-control(type='text', name='personName')
+      br
+      label(for='personEmail') What is the email address of the person?
+      input#personEmail.input-sm.form-control(type='text', name='personEmail')
       button.btn.btn-primary(type='submit') Save
 
   include personSection.pug

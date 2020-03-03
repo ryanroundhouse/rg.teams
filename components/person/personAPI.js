@@ -1,7 +1,7 @@
 var Person = require('./personDAO');
 
-exports.add = function(name, teamId){
-    Person.add(name, teamId);
+exports.add = function(name, teamId, email){
+    Person.add(name, teamId, email);
 };
 
 exports.getAll = function(){

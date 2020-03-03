@@ -14,5 +14,8 @@ block body
     label Name:
     label #{person.name}
     br
+    label Email:
+    label #{person.email}
+    br
     form.hidden(method="post", action="/person/" + person._id + "/delete")
       button.btn.btn-outline-danger.delete Delete

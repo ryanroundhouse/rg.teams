@@ -7,7 +7,8 @@ var gameAPI = require('./personAPI');
 router.post('/add', async function(req, res, next) {
     const name = req.body.personName;
     const teamId = req.body.teamId;
-    await gameAPI.add(name, teamId);
+    const email = req.body.personEmail;
+    await gameAPI.add(name, teamId, email);
     res.redirect('back');
 });
 
