@@ -1,0 +1,22 @@
+extends base.pug
+
+block scripts
+  script(src="/static/javascripts/picker.min.js")
+  link(rel="stylesheet", href="/static/css/picker.min.css")
+
+block body
+    h1.text-center Welcome to RG Teams!
+
+    .div.teamDiv
+    label Team:
+    label #{team.name}
+    br
+    label Team ID:
+    label #{team._id}
+    br
+    form.hidden(method="post", action="/team/" + team._id + "/delete")
+        button.btn.btn-outline-danger.delete Delete
+    br
+    br
+    label Games:
+    include gameSection.pug

@@ -15,6 +15,11 @@ exports.getById = function(id){
     return game;
 };
 
+exports.getByTeam = function(teamId){
+    const games = Game.getByTeam(teamId);
+    return games;
+};
+
 exports.deleteById = function(id){
     const result = Game.deleteById(id);
     return result;

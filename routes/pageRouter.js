@@ -16,13 +16,25 @@ router.get('/', async function(req, res, next) {
 
 router.get('/page/game/:id', async function(req, res, next) {
   const game = await Game.getById(req.params.id);
-  if (game == null)
-  {
+  if (game == null){
     res.redirect('/');
   }
-  else
-  {
+  else{
     res.render('gamePage', { game: game });
+  }
+});
+
+router.get('/page/team/:id', async function(req, res, next) {
+  const team = await Team.getById(req.params.id);
+  const games = await Game.getByTeam(team.id);
+  if (team == null){
+    res.redirect('/');
+  }
+  else{
+    res.render('teamPage', { 
+      team: team, 
+      games: games,
+    });
   }
 });
 

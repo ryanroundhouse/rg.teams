@@ -10,6 +10,6 @@ form.jumbotron(method='POST' action='/team/add')
     ul
       each team in teams
         li
-          label #{team.name}
+          a(href="/page/team/" + team._id) #{team.name}
           form.hidden(method="post", action="/team/" + team.id + "/delete")
               button.btn.btn-outline-danger.delete Delete

@@ -25,6 +25,10 @@ exports.getAll = function(){
     return Game.find({}).exec();
 };
 
+exports.getByTeam = function(teamId){
+    return Game.find({team: teamId}).exec();
+};
+
 exports.deleteById = function(id){
     const result = Game.deleteOne({_id: id}, function(err, res){
         if (err){
