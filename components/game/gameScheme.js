@@ -4,9 +4,9 @@ var Schema = mongoose.Schema;
 
 var attendanceSchema = new Schema(
   {
-    team: {type: mongoose.Schema.Types.ObjectId, ref: 'Person'},
+    person: {type: mongoose.Schema.Types.ObjectId, ref: 'Person'},
     status: {type: String},
-    comment: {type: Comment},
+    comment: {type: String},
   }
 );
 

@@ -1,4 +1,5 @@
 var Game = require('./gameScheme');
+var PersonAPI = require('../person/personAPI');
 
 exports.add = function(date, teamId){
     var newGame = new Game(
@@ -18,7 +19,9 @@ exports.add = function(date, teamId){
 };
 
 exports.getByID = function(id){
-    return Game.findById(id).populate('team').exec();
+    return Game.findById(id)
+        .populate([{path: 'team'}])
+        .exec();
 };
 
 exports.getAll = function(){
@@ -36,4 +39,17 @@ exports.deleteById = function(id){
         }
     });
     return result;
+};
+
+exports.update = async function(id, people, peopleStatus){
+    var gameToUpdate = await exports.getByID(id);
+    const playerLength = people.length;
+    for (var i = 0; i < playerLength; i++) {
+        var personObj = await PersonAPI.getById(people[i]);
+        gameToUpdate.attendance.push({
+            person: personObj, 
+            status: peopleStatus[i],
+        });
+    }
+    gameToUpdate.save();
 };
