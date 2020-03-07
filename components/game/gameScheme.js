@@ -6,6 +6,7 @@ var GameSchema = new Schema(
     {
         date: {type: Date},
         team: {type: mongoose.Schema.Types.ObjectId, ref: 'Team'},
+        teamMembers: [String],
     }
 )
 

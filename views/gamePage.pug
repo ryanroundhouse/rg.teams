@@ -19,3 +19,18 @@ block body
     br
     form.hidden(method="post", action="/game/" + game._id + "/delete")
       button.btn.btn-outline-danger.delete Delete
+
+  .div.attendanceDiv
+    form.jumbotron(method='POST' action='/game/' + game._id + "/update")
+      label Attendance:
+      ul
+        each person in people
+          li
+            input#personId(type='hidden', name='personId', value=person._id)
+            a(href="/page/person/" + person._id) #{person.name}
+            br
+            label Status:
+            select(name='personStatus', id='personStatusComboBox' + person._id)
+              each status in ['', 'In', 'Out', 'Maybe']
+                  option(value=status) #{status}
+      button.btn.btn-primary(type='submit') Save

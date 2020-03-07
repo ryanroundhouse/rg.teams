@@ -19,11 +19,12 @@ router.get('/', async function(req, res, next) {
 
 router.get('/page/game/:id', async function(req, res, next) {
   const game = await Game.getById(req.params.id);
+  const people = await Person.getByTeam(game.team);
   if (game == null){
     res.redirect('/');
   }
   else{
-    res.render('gamePage', { game: game });
+    res.render('gamePage', { game: game, people: people });
   }
 });
 

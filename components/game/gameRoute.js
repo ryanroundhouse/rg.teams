@@ -20,4 +20,13 @@ router.post('/:id/delete', async function(req, res, next){
     res.redirect('back');
 });
 
+router.post('/:id/update', async function(req, res, next){
+    const id = req.params.id;
+    const playerLength = req.body.personId.length;
+    for (var i = 0; i < playerLength; i++) {
+        
+    }
+    res.redirect('back');
+});
+
 module.exports = router;
