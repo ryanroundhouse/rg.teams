@@ -20,22 +20,24 @@ router.get('/', async function(req, res, next) {
 router.get('/page/game/:id', async function(req, res, next) {
   const game = await Game.getById(req.params.id);
   const people = await Person.getByTeam(game.team);
-  // const peopleCount = people.length;
-  // for (var i = 0; i< peopleCount; i++){
-  //   var personId = people[i].id;
-  //   if (!game.attendance.some((attendee) => {
-  //     attendee.person === personId;
-  //   })){
-  //     const person = await Person.getById(personId);
-  //     game.attendance.push({person: personId});
-  //   }
-  // }
+
+  var attendance = game.attendance;
+  const peopleCount = people.length;
+  for (var i = 0; i< peopleCount; i++){
+    var personId = people[i].id;
+    if (!attendance.some((attendee) => {
+      attendee.person.id == personId;
+    })){
+      const person = await Person.getById(personId);
+      attendance.push({person: person, status: ''});
+    }
+  }
   
   if (game == null){
     res.redirect('/');
   }
   else{
-    res.render('gamePage', { game: game, people: people });
+    res.render('gamePage', { game: game, attendees: attendance });
   }
 });
 

@@ -19,9 +19,11 @@ exports.add = function(date, teamId){
 };
 
 exports.getByID = function(id){
-    return Game.findById(id)
-        .populate([{path: 'team'}])
+    const game = Game.findById(id)
+        .populate({path: 'team'})
+        .populate("attendance.person")
         .exec();
+        return game;
 };
 
 exports.getAll = function(){
@@ -43,13 +45,21 @@ exports.deleteById = function(id){
 
 exports.update = async function(id, people, peopleStatus){
     var gameToUpdate = await exports.getByID(id);
-    const playerLength = people.length;
-    for (var i = 0; i < playerLength; i++) {
-        var personObj = await PersonAPI.getById(people[i]);
+    if (typeof people === 'string' || people instanceof String){
         gameToUpdate.attendance.push({
-            person: personObj, 
-            status: peopleStatus[i],
+            person: people, 
+            status: peopleStatus,
         });
     }
+    else{
+        const playerLength = people.length;
+        for (var i = 0; i < playerLength; i++) {
+            gameToUpdate.attendance.push({
+                person: people[i], 
+                status: peopleStatus[i],
+            });
+        }
+    }
+
     gameToUpdate.save();
 };
