@@ -24,13 +24,13 @@ block body
     form.jumbotron(method='POST' action='/game/' + game._id + "/update")
       label Attendance:
       ul
-        each person in people
+        each attendee in attendees
           li
-            input#personId(type='hidden', name='personId', value=person._id)
-            a(href="/page/person/" + person._id) #{person.name}
+            input#personId(type='hidden', name='personId', value=attendee.person._id)
+            a(href="/page/person/" + attendee.person._id) #{attendee.person.name}
             br
             label Status:
-            select(name='personStatus', id='personStatusComboBox' + person._id)
+            select(name='personStatus', id='personStatusComboBox' + attendee.person._id)
               each status in ['', 'In', 'Out', 'Maybe']
-                  option(value=status) #{status}
+                  option(value=status, selected= attendee.status == status) #{status}
       button.btn.btn-primary(type='submit') Save

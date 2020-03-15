@@ -22,10 +22,9 @@ router.post('/:id/delete', async function(req, res, next){
 
 router.post('/:id/update', async function(req, res, next){
     const id = req.params.id;
-    const playerLength = req.body.personId.length;
-    for (var i = 0; i < playerLength; i++) {
-        
-    }
+    const people = req.body.personId;
+    const peopleStatus = req.body.personStatus;
+    await gameAPI.update(id, people, peopleStatus);
     res.redirect('back');
 });
 

@@ -24,3 +24,8 @@ exports.deleteById = function(id){
     const result = Game.deleteById(id);
     return result;
 };
+
+exports.update = function(id, people, peopleStatus){
+    const result = Game.update(id, people, peopleStatus);
+    return result;
+}
