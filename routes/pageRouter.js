@@ -19,6 +19,10 @@ router.get('/', async function(req, res, next) {
 
 router.get('/page/game/:id', async function(req, res, next) {
   const game = await Game.getById(req.params.id);
+  if (game == null){
+    res.redirect('/');
+    return;
+  }
   const people = await Person.getByTeam(game.team);
 
   var attendance = game.attendance;
@@ -26,19 +30,14 @@ router.get('/page/game/:id', async function(req, res, next) {
   for (var i = 0; i< peopleCount; i++){
     var personId = people[i].id;
     if (!attendance.some((attendee) => {
-      attendee.person.id == personId;
+      return attendee.person.id == personId;
     })){
       const person = await Person.getById(personId);
       attendance.push({person: person, status: ''});
     }
   }
   
-  if (game == null){
-    res.redirect('/');
-  }
-  else{
-    res.render('gamePage', { game: game, attendees: attendance });
-  }
+  res.render('gamePage', { game: game, attendees: attendance });
 });
 
 router.get('/page/person/:id', async function(req, res, next) {
