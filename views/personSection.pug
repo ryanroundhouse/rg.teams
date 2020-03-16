@@ -5,3 +5,5 @@
           a(href="/page/person/" + person._id) #{person.name}
           form.hidden(method="post", action="/person/" + person.id + "/delete")
               button.btn.btn-outline-danger.delete Delete
+          form.hidden(method="post", action="/team/" + team.id + "/person/" + person.id + "/remove")
+              button.btn.btn-outline-danger.delete Remove

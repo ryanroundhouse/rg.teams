@@ -32,3 +32,10 @@ exports.deleteById = function(id){
     });
     return result;
 };
+
+exports.removePerson = async function(teamId, personId){
+    var team = await exports.getByID(teamId);
+    for (var i = 0; i < attendance.length; i++){
+        
+    }
+}

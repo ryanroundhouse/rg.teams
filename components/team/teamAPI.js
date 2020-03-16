@@ -18,3 +18,8 @@ exports.deleteById = function(id){
     const result = Team.deleteById(id);
     return result;
 };
+
+exports.removePerson = function(teamId, personId){
+    const result = Team.removePerson(teamId, personId);
+    return result;
+};

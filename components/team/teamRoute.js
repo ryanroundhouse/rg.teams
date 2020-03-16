@@ -18,4 +18,11 @@ router.post('/:id/delete', async function(req, res, next){
     res.redirect('back');
 });
 
+router.post('/:id/person/:personId', async function(req, res, next){
+    const teamId = req.params.id;
+    const personId = req.params.personId;
+    await teamAPI.removePerson(teamId, personId);
+    res.redirect('back');
+});
+
 module.exports = router;

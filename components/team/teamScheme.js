@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 var TeamSchema = new Schema(
     {
         name: {type: String},
+        players: [{type: mongoose.Schema.Types.ObjectId, ref: 'Team'}],
     }
 )
 
