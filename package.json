@@ -10,7 +10,7 @@
   "author": "ryan graham",
   "license": "ISC",
   "dependencies": {
-    "@okta/oidc-middleware": "0.0.6",
+    "@okta/oidc-middleware": "5.0.0",
     "asyncawait": "^3.0.0",
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
